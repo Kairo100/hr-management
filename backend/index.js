@@ -1,5 +1,5 @@
 import express from 'express';
-import mysql from 'mysql';
+import mysql from 'mysql2';
 import cors from 'cors'
 import dotenv from 'dotenv';
 dotenv.config();
@@ -9,12 +9,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const db = mysql.createConnection({
-    host: process.env.MYSQL_HOST,  // Use MYSQL_HOST from .env
-    port: process.env.MYSQL_PORT,  // Use MYSQL_PORT from .env
-    user: process.env.MYSQL_USER,  // Use MYSQL_USER from .env
-    password: process.env.MYSQL_PASSWORD,  // Use MYSQL_PASSWORD from .env
-    database: process.env.MYSQL_DATABASE,  // Use MYSQL_DATABASE from .env
-    connectTimeout: 10000,
+    host: process.env.DB_HOST, // 'containers-us-west-123.railway.app'
+    port: process.env.DB_PORT, // 50689
+    user: process.env.DB_USER, // 'root'
+    password: process.env.DB_PASSWORD, // Your DB password
+    database: process.env.DB_NAME, // 'railway'
+    connectTimeout: 30000, // Increase timeout to 30 seconds
 });
 
 // Connect to MySQL
