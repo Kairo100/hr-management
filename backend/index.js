@@ -1,15 +1,20 @@
 import express from 'express';
 import mysql from 'mysql';
 import cors from 'cors'
+import dotenv from 'dotenv';
+dotenv.config();
+
 // const cors = require('cors');
 const app = express();
 app.use(express.json());
 app.use(cors());
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "hr_management"
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    connectTimeout: 10000, 
 });
 
 // Connect to MySQL
