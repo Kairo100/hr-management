@@ -9,12 +9,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const db = mysql.createConnection({
- host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  connectTimeout: 10000, 
+    host: process.env.MYSQL_HOST,  // Use MYSQL_HOST from .env
+    port: process.env.MYSQL_PORT,  // Use MYSQL_PORT from .env
+    user: process.env.MYSQL_USER,  // Use MYSQL_USER from .env
+    password: process.env.MYSQL_PASSWORD,  // Use MYSQL_PASSWORD from .env
+    database: process.env.MYSQL_DATABASE,  // Use MYSQL_DATABASE from .env
+    connectTimeout: 10000,
 });
 
 // Connect to MySQL
